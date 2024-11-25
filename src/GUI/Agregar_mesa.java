@@ -48,6 +48,7 @@ public class Agregar_mesa extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        guardar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/disco-flexible.png"))); // NOI18N
         guardar_Button.setText("Guardar");
         guardar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +56,7 @@ public class Agregar_mesa extends javax.swing.JFrame {
             }
         });
 
+        cancelar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/boton-eliminar.png"))); // NOI18N
         cancelar_Button.setText("Cancelar");
         cancelar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,18 +83,20 @@ public class Agregar_mesa extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(92, 92, 92)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Num_mesa_ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Ubicacion_ComboBox, 0, 304, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(guardar_Button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                        .addComponent(cancelar_Button))
-                    .addComponent(Num_mesa_ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Ubicacion_ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                        .addGap(112, 112, 112)
+                        .addComponent(cancelar_Button)))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +109,7 @@ public class Agregar_mesa extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(Num_mesa_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardar_Button)
                     .addComponent(cancelar_Button))
@@ -128,7 +132,6 @@ public class Agregar_mesa extends javax.swing.JFrame {
     
     String valor = (String) Num_mesa_ComboBox.getSelectedItem();
     if (valor.equals("----------")) {
-        // Si el JComboBox está vacío o no tiene un valor seleccionado
         JOptionPane.showMessageDialog(this, "Por favor, seleccione numero de mesa", "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
@@ -139,7 +142,6 @@ public class Agregar_mesa extends javax.swing.JFrame {
     Gestion_votos.Mesa mesa=new Gestion_votos.Mesa(texto,valor);
     elec.agregarMesa(mesa);
     this.dispose();
-    ///JOptionPane.showMessageDialog(this, "Fecha: " + fechaStr + "\nTipo de Elección: " + valorcombo_box);
     }//GEN-LAST:event_guardar_ButtonActionPerformed
 
     private void cancelar_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelar_ButtonActionPerformed

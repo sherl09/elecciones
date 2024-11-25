@@ -229,7 +229,8 @@ public class Acta_electoral extends javax.swing.JFrame {
 
         Resultado_TextField.setEditable(false);
 
-        Grabar_Button.setText("Grabar");
+        Grabar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/disco-flexible.png"))); // NOI18N
+        Grabar_Button.setText("Guardar");
         Grabar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Grabar_ButtonActionPerformed(evt);
@@ -254,10 +255,6 @@ public class Acta_electoral extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(294, 294, 294))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
@@ -305,17 +302,21 @@ public class Acta_electoral extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel10))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Observacion_CheckBox))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Grabar_Button)
-                        .addGap(82, 82, 82)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(294, 294, 294))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Observacion_CheckBox))
+                                .addGap(289, 289, 289))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(Grabar_Button)
+                                .addGap(353, 353, 353))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,8 +374,9 @@ public class Acta_electoral extends javax.swing.JFrame {
                 .addComponent(Observacion_CheckBox)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Grabar_Button))
+                .addGap(54, 54, 54)
+                .addComponent(Grabar_Button)
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -409,8 +411,9 @@ public class Acta_electoral extends javax.swing.JFrame {
         String info=Observacion_TextField.getText();
         if(!info.isEmpty()){
             mesa.getActa().setObservaciones(info);
-            JOptionPane.showMessageDialog(this, "Observacion guardado", "Guardado", JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(this, "Observacion guardado", "Guardado", JOptionPane.INFORMATION_MESSAGE);
         }
+        eleccion.setEstado(false);
     }//GEN-LAST:event_Grabar_ButtonActionPerformed
 
     private void Observacion_CheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Observacion_CheckBoxActionPerformed

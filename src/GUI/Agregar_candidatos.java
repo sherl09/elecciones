@@ -54,6 +54,7 @@ public class Agregar_candidatos extends javax.swing.JFrame {
 
         jLabel1.setText("DNI");
 
+        guardar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/disco-flexible.png"))); // NOI18N
         guardar_Button.setText("Guardar");
         guardar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +62,7 @@ public class Agregar_candidatos extends javax.swing.JFrame {
             }
         });
 
+        cancelar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/boton-eliminar.png"))); // NOI18N
         cancelar_Button.setText("Cancelar");
         cancelar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,24 +94,27 @@ public class Agregar_candidatos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                .addGap(87, 87, 87)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(9, 9, 9)))
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Apellido_TextField, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(guardar_Button)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                            .addComponent(cancelar_Button))
-                        .addComponent(Nombre_TextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(DNI_TextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(Partido_ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(guardar_Button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cancelar_Button)
+                        .addGap(38, 38, 38))
+                    .addComponent(Nombre_TextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(DNI_TextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Partido_ComboBox, 0, 358, Short.MAX_VALUE)
+                    .addComponent(Apellido_TextField))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +127,7 @@ public class Agregar_candidatos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Nombre_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(Apellido_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -162,7 +167,7 @@ public class Agregar_candidatos extends javax.swing.JFrame {
     }
     String valor = (String) Partido_ComboBox.getSelectedItem();
     if (valor.equals("----------")) {
-        // Si el JComboBox está vacío o no tiene un valor seleccionado
+        
         JOptionPane.showMessageDialog(this, "Por favor, seleccione el partido del candidato", "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
@@ -174,7 +179,6 @@ public class Agregar_candidatos extends javax.swing.JFrame {
     
     this.dispose();
     
-    ///JOptionPane.showMessageDialog(this, "Fecha: " + fechaStr + "\nTipo de Elección: " + valorcombo_box);
     }//GEN-LAST:event_guardar_ButtonActionPerformed
 
     private void cancelar_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelar_ButtonActionPerformed

@@ -61,6 +61,7 @@ public class Editar_elecciones extends javax.swing.JFrame {
 
         jLabel2.setText("Tipo de eleccion");
 
+        guardar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/disco-flexible.png"))); // NOI18N
         guardar_Button.setText("Guardar");
         guardar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +69,7 @@ public class Editar_elecciones extends javax.swing.JFrame {
             }
         });
 
+        cancelar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/boton-eliminar.png"))); // NOI18N
         cancelar_Button.setText("Cancelar");
         cancelar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,27 +93,26 @@ public class Editar_elecciones extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(guardar_Button)
+                .addGap(100, 100, 100)
+                .addComponent(cancelar_Button)
+                .addGap(126, 126, 126))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tipo_elec_ComboBox, 0, 296, Short.MAX_VALUE)
-                            .addComponent(Fecha_jcalender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addComponent(guardar_Button)
-                        .addGap(121, 121, 121)
-                        .addComponent(cancelar_Button)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tipo_elec_ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Fecha_jcalender, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
+                .addContainerGap(117, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
                     .addComponent(Fecha_jcalender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -119,11 +120,11 @@ public class Editar_elecciones extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tipo_elec_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(109, 109, 109)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardar_Button)
                     .addComponent(cancelar_Button))
-                .addGap(49, 49, 49))
+                .addGap(46, 46, 46))
         );
 
         tipo_elec_ComboBox.getAccessibleContext().setAccessibleName("");
@@ -153,7 +154,6 @@ public class Editar_elecciones extends javax.swing.JFrame {
     String valorcombo_box = (String) tipo_elec_ComboBox.getSelectedItem();
     
     if (valorcombo_box.equals("----------")) {
-        // Si el JComboBox está vacío o no tiene un valor seleccionado
         JOptionPane.showMessageDialog(this, "Por favor, seleccione el tipo de elección", "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
@@ -161,7 +161,6 @@ public class Editar_elecciones extends javax.swing.JFrame {
     Gestion_votos.Datos.data.modificarEleccion(id, fechaStr, valorcombo_box);
     this.dispose();
     
-    ///JOptionPane.showMessageDialog(this, "Fecha: " + fechaStr + "\nTipo de Elección: " + valorcombo_box);
     }//GEN-LAST:event_guardar_ButtonActionPerformed
 
     private void tipo_elec_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipo_elec_ComboBoxActionPerformed
@@ -199,37 +198,7 @@ public class Editar_elecciones extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Editar_elecciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+   
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

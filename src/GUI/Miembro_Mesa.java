@@ -86,6 +86,7 @@ public class Miembro_Mesa extends javax.swing.JFrame {
 
         Vocal_TextField.setEditable(false);
 
+        Rellenar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/agregar-usuario.png"))); // NOI18N
         Rellenar_Button.setText("Rellenar");
         Rellenar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +94,7 @@ public class Miembro_Mesa extends javax.swing.JFrame {
             }
         });
 
+        Editar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/editar.png"))); // NOI18N
         Editar_Button.setText("Editar");
         Editar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +126,6 @@ public class Miembro_Mesa extends javax.swing.JFrame {
                                     .addComponent(Secretario_TextField)
                                     .addComponent(Presidente_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
                                 .addComponent(Rellenar_Button)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Editar_Button)))))
@@ -147,11 +148,11 @@ public class Miembro_Mesa extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(Vocal_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Rellenar_Button)
                     .addComponent(Editar_Button))
-                .addGap(73, 73, 73))
+                .addGap(46, 46, 46))
         );
 
         pack();
@@ -180,6 +181,14 @@ public class Miembro_Mesa extends javax.swing.JFrame {
 
     private void Editar_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Editar_ButtonActionPerformed
         // TODO add your handling code here:
+        Editar_miembro formulario = new Editar_miembro();
+        formulario.setDatos(mesa);
+        formulario.setVisible(true);
+        formulario.addWindowListener(new java.awt.event.WindowAdapter() {
+        public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+            mostrarMiembros();
+        }
+    });
     }//GEN-LAST:event_Editar_ButtonActionPerformed
 
     /**

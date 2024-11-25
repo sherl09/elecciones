@@ -109,8 +109,8 @@ public class Iniciar_sesion extends javax.swing.JFrame {
     String usuario = usuario_TextField.getText();
     String contrasena = new String(contrase_PasswordField.getPassword()); 
     if (!usuario.isEmpty()&& !contrasena.isEmpty() && Datos.data1.validar_suario(usuario, contrasena)==true ||(usuario.equals("admin")&& contrasena.equals("1234") ) ) {
-           Menu main = new Menu(); // Crear instancia de la nueva ventana
-        main.setVisible(true); // Mostrar la nueva ventana
+           Menu main = new Menu();
+        main.setVisible(true); 
         this.dispose(); 
     } else {
         javax.swing.JOptionPane.showMessageDialog(this, "Error de usuario o contraseña", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
@@ -156,7 +156,7 @@ public class Iniciar_sesion extends javax.swing.JFrame {
         });
                 Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             Datos.guardarDatos();
-            System.out.println("Datos guardados automáticamente al cerrar el programa.");
+            System.out.println("Datos guardados automáticamente al cerrar el programa");
         }));
         Datos.cargarDatos();
     }

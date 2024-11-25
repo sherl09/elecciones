@@ -54,6 +54,7 @@ public class Editar_miembro extends javax.swing.JFrame {
 
         jLabel1.setText("DNI");
 
+        guardar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/disco-flexible.png"))); // NOI18N
         guardar_Button.setText("Guardar");
         guardar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +62,7 @@ public class Editar_miembro extends javax.swing.JFrame {
             }
         });
 
+        cancelar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/boton-eliminar.png"))); // NOI18N
         cancelar_Button.setText("Cancelar");
         cancelar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,23 +100,28 @@ public class Editar_miembro extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(Nombre_TextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Apellido_TextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Tipo_ComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 263, Short.MAX_VALUE))
+                            .addComponent(DNI_TextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(129, 129, 129)
                         .addComponent(guardar_Button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                        .addComponent(cancelar_Button))
-                    .addComponent(Nombre_TextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(DNI_TextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Tipo_ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Apellido_TextField))
-                .addContainerGap(146, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cancelar_Button)))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,11 +142,11 @@ public class Editar_miembro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Tipo_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardar_Button)
                     .addComponent(cancelar_Button))
-                .addGap(49, 49, 49))
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -167,20 +174,15 @@ public class Editar_miembro extends javax.swing.JFrame {
     
     String valor = (String) Tipo_ComboBox.getSelectedItem();
     if (valor.equals("----------")) {
-        // Si el JComboBox está vacío o no tiene un valor seleccionado
+        
         JOptionPane.showMessageDialog(this, "Por favor, seleccione algun tipo", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    if (mesa.encontrarTipo(valor)) {
-        // Si el JComboBox está vacío o no tiene un valor seleccionado
-        JOptionPane.showMessageDialog(this, "Por favor, seleccione otro tipo", "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
    
     mesa.modificarMiembro(texto,texto2,texto3,valor);
     this.dispose();
     
-    ///JOptionPane.showMessageDialog(this, "Fecha: " + fechaStr + "\nTipo de Elección: " + valorcombo_box);
+
     }//GEN-LAST:event_guardar_ButtonActionPerformed
 
     private void cancelar_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelar_ButtonActionPerformed

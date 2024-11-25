@@ -51,6 +51,7 @@ public class Agregar_elecciones extends javax.swing.JFrame {
 
         jLabel2.setText("Tipo de eleccion");
 
+        guardar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/disco-flexible.png"))); // NOI18N
         guardar_Button.setText("Guardar");
         guardar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +59,7 @@ public class Agregar_elecciones extends javax.swing.JFrame {
             }
         });
 
+        cancelar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/boton-eliminar.png"))); // NOI18N
         cancelar_Button.setText("Cancelar");
         cancelar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +96,7 @@ public class Agregar_elecciones extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(121, 121, 121)
                         .addComponent(guardar_Button)
-                        .addGap(101, 101, 101)
+                        .addGap(82, 82, 82)
                         .addComponent(cancelar_Button)))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
@@ -109,7 +111,7 @@ public class Agregar_elecciones extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tipo_elec_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardar_Button)
                     .addComponent(cancelar_Button))
@@ -121,43 +123,33 @@ public class Agregar_elecciones extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void guardar_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardar_ButtonActionPerformed
-        // TODO add your handling code here:
-    Date ofecha = Fecha_jcalender.getDate();
-    Date fechaActual = new Date();
-    String fechaStr = "";
-    if (ofecha != null && !ofecha.before(fechaActual)) {
-        SimpleDateFormat text = new SimpleDateFormat("dd-MM-yyyy");
-        fechaStr = text.format(ofecha);
-    }else{
-        JOptionPane.showMessageDialog(this, "Por favor, seleccione una fecha valida", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    String valorcombo_box = (String) tipo_elec_ComboBox.getSelectedItem();
-    
-    if (valorcombo_box.equals("----------")) {
-        // Si el JComboBox está vacío o no tiene un valor seleccionado
-        JOptionPane.showMessageDialog(this, "Por favor, seleccione el tipo de elección", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    /*
-    String texto = candidato_TextField.getText();
-    if(texto.isEmpty()){
-        JOptionPane.showMessageDialog(this, "Por favor, escriba el nombre del candidato", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    */
-    Gestion_votos.Eleccion elec=new Gestion_votos.Eleccion(fechaStr,valorcombo_box);
-    Gestion_votos.Datos.data.agregarEleccion(elec);
-    
-    this.dispose();
-    
-    ///JOptionPane.showMessageDialog(this, "Fecha: " + fechaStr + "\nTipo de Elección: " + valorcombo_box);
-    }//GEN-LAST:event_guardar_ButtonActionPerformed
-
     private void tipo_elec_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipo_elec_ComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tipo_elec_ComboBoxActionPerformed
+
+    private void guardar_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardar_ButtonActionPerformed
+        // TODO add your handling code here:
+        Date ofecha = Fecha_jcalender.getDate();
+        Date fechaActual = new Date();
+        String fechaStr = "";
+        if (ofecha != null && !ofecha.before(fechaActual)) {
+            SimpleDateFormat text = new SimpleDateFormat("dd-MM-yyyy");
+            fechaStr = text.format(ofecha);
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione una fecha valida", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        String valorcombo_box = (String) tipo_elec_ComboBox.getSelectedItem();
+
+        if (valorcombo_box.equals("----------")) {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione el tipo de elección", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        Gestion_votos.Eleccion elec=new Gestion_votos.Eleccion(fechaStr,valorcombo_box);
+        Gestion_votos.Datos.data.agregarEleccion(elec);
+
+        this.dispose();
+    }//GEN-LAST:event_guardar_ButtonActionPerformed
 
     private void cancelar_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelar_ButtonActionPerformed
         // TODO add your handling code here:

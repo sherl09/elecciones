@@ -36,8 +36,8 @@ public class Menu extends javax.swing.JFrame {
         model.setRowCount(0);
         String[][] elecciones = Gestion_votos.Datos.data.mostrarElecciones();
         JButton boton1=new JButton("candidatos");
-        
         boton1.setName("candidatos");
+        
         JButton boton2=new JButton("Mesa Electoral");
         boton2.setName("Mesa Electoral");
         JButton boton3=new JButton("Informe");
@@ -53,17 +53,14 @@ public class Menu extends javax.swing.JFrame {
         System.out.println(Gestion_votos.Datos.data.tama()); 
         
 }
-        private void eliminarFilasSeleccionadas() {
+        private void eliminarFila() {
             DefaultTableModel model = (DefaultTableModel)elecciones_Table.getModel();
-        // Recorremos las filas en la tabla (de atrás hacia adelante para evitar problemas de índices al eliminar)
         for (int i = model.getRowCount()-1; i >= 0; i--) {
-            Boolean isSelected = (Boolean) model.getValueAt(i, 2); // Comprobar si está marcado el checkbox
-            if (isSelected != null && isSelected) {
+            Boolean selec = (Boolean) model.getValueAt(i, 2);
+            if (selec != null && selec) {
                 System.out.println(i);
                 Gestion_votos.Datos.data.eliminarEleccion(i+1);
                 mostrarElecciones();
-              
-               System.out.println("Lista actual después de eliminar:");
                     Gestion_votos.Datos.data.mostrarElecciones();
             }
             
@@ -92,13 +89,15 @@ public class Menu extends javax.swing.JFrame {
         jLabel1.setText("MENU DE ELECCIONES");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        agregar_Button.setText("Agregar eleccion");
+        agregar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/agregar-archivo.png"))); // NOI18N
+        agregar_Button.setText("Agregar");
         agregar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregar_ButtonActionPerformed(evt);
             }
         });
 
+        editar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/editar.png"))); // NOI18N
         editar_Button.setText("Editar");
         editar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +105,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        eliminar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/eliminar.png"))); // NOI18N
         eliminar_Button.setText("Eliminar");
         eliminar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,15 +161,15 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(162, 162, 162)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(agregar_Button)
-                                .addGap(82, 82, 82)
-                                .addComponent(editar_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(146, 146, 146)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editar_Button)
+                                .addGap(63, 63, 63)
                                 .addComponent(eliminar_Button))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,12 +178,12 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(77, 77, 77)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(agregar_Button)
+                    .addComponent(eliminar_Button)
                     .addComponent(editar_Button)
-                    .addComponent(eliminar_Button))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(agregar_Button))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -209,7 +209,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void eliminar_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_ButtonActionPerformed
         // TODO add your handling code here:
-        eliminarFilasSeleccionadas();
+        eliminarFila();
         mostrarElecciones();
     }//GEN-LAST:event_eliminar_ButtonActionPerformed
 
@@ -253,24 +253,15 @@ public class Menu extends javax.swing.JFrame {
                     }
                 }
                 if(boton.getName().equals("Informe")){
-                    System.out.println("click Informe");
                     Eleccion elec=Datos.data.eleccion_pos(row);
-                    Lista<Mesa> mesa=elec.getMesaelectoral();
-                    Nodo<Mesa>mes=mesa.getCabeza();
-                    boolean encontrada = false;
-                    while (mes != null) {
-                        if (mes.getElemento().getActa() != null) {
-                            encontrada = true;
-                            break;  
-        }
-                        mes = mes.getSgteNodo();  
-    }
-                    if (encontrada) {
-                    Informe info = new Informe();
-                    info.setdatos(row);
-                    info.setVisible(true);
-                } else{
-                    JOptionPane.showMessageDialog(this, "No hay actas", "Error", JOptionPane.ERROR_MESSAGE);
+                    if(!elec.isEstado()){
+                        System.out.println("click Informe");
+                        Informe info = new Informe();
+                        info.setdatos(row);
+                        info.setVisible(true);
+                        }
+                    else{
+                    JOptionPane.showMessageDialog(this, "Eleccion en proceso", "Error", JOptionPane.INFORMATION_MESSAGE);
                 }
                     }
         }

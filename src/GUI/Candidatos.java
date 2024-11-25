@@ -88,6 +88,7 @@ public class Candidatos extends javax.swing.JFrame {
             Candidato_Table.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        Agregar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/agregar-usuario.png"))); // NOI18N
         Agregar_Button.setText("Agregar");
         Agregar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +96,7 @@ public class Candidatos extends javax.swing.JFrame {
             }
         });
 
+        Eliminar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/eliminar.png"))); // NOI18N
         Eliminar_Button.setText("Eliminar");
         Eliminar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +104,7 @@ public class Candidatos extends javax.swing.JFrame {
             }
         });
 
+        Editar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/editar.png"))); // NOI18N
         Editar_Button.setText("Editar");
         Editar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,15 +123,15 @@ public class Candidatos extends javax.swing.JFrame {
                         .addComponent(Candidatos_jLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(193, 193, 193)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Agregar_Button)
-                                .addGap(83, 83, 83)
+                                .addGap(29, 29, 29)
                                 .addComponent(Eliminar_Button)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(36, 36, 36)
                                 .addComponent(Editar_Button)))))
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,13 +139,13 @@ public class Candidatos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(Candidatos_jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Agregar_Button)
                     .addComponent(Eliminar_Button)
                     .addComponent(Editar_Button))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -159,12 +162,11 @@ public class Candidatos extends javax.swing.JFrame {
         }
     });
     }//GEN-LAST:event_Agregar_ButtonActionPerformed
-    private void eliminarFilasSeleccionadas() {
+    private void eliminarFila() {
             DefaultTableModel model = (DefaultTableModel)Candidato_Table.getModel();
-        // Recorremos las filas en la tabla (de atrás hacia adelante para evitar problemas de índices al eliminar)
         for (int i = model.getRowCount()-1; i >= 0; i--) {
-            Boolean isSelected = (Boolean) model.getValueAt(i, 4); // Comprobar si está marcado el checkbox
-            if (isSelected != null && isSelected) {
+            Boolean selec = (Boolean) model.getValueAt(i, 4); 
+            if (selec != null && selec) {
                 System.out.println(i);
                 elec.eliminar_candidato(i+1);
                 mostrarCandidatos();
@@ -177,7 +179,7 @@ public class Candidatos extends javax.swing.JFrame {
     }
     private void Eliminar_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_ButtonActionPerformed
         // TODO add your handling code here:
-        eliminarFilasSeleccionadas();
+        eliminarFila();
         mostrarCandidatos();
     }//GEN-LAST:event_Eliminar_ButtonActionPerformed
 

@@ -72,12 +72,12 @@ public void actualizar() {
     Candidato ganador = eleccion.ganador_eleccion();
     System.out.println("Obteniendo ganador listo .");
     if (ganador != null) {
-        System.out.println("Ganador encontrado: " + ganador.getNombre());
+        System.out.println("Ganador " + ganador.getNombre());
         Ganador_TextField.setText(ganador.getNombre());
         Resultado_TextField.setText(Integer.toString(eleccion.Voto_candidato_total(ganador.getDni())));
     }
     
-    System.out.println("Actualizando votos de candidato...");
+    System.out.println("Actualizando votos de candidato");
     String valor2 = (String) Candidato_ComboBox.getSelectedItem();
     if (!"----------".equals(valor2)) {
         int selec = Candidato_ComboBox.getSelectedIndex() - 1;

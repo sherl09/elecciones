@@ -98,14 +98,14 @@ public class Registrar_voto extends javax.swing.JFrame {
             }
         });
 
-        Guardar_Button.setText("Guardar");
+        Guardar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/votar.png"))); // NOI18N
         Guardar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Guardar_ButtonActionPerformed(evt);
             }
         });
 
-        Cancelar_Button.setText("Cancelar");
+        Cancelar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/boton-eliminar.png"))); // NOI18N
         Cancelar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Cancelar_ButtonActionPerformed(evt);
@@ -116,46 +116,46 @@ public class Registrar_voto extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Guardar_Button)
-                .addGap(50, 50, 50)
-                .addComponent(Cancelar_Button)
-                .addGap(245, 245, 245))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(248, 248, 248)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(171, 171, 171)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Tipo_voto_ComboBox, 0, 205, Short.MAX_VALUE)
+                            .addComponent(Tipo_voto_ComboBox, 0, 222, Short.MAX_VALUE)
                             .addComponent(Candidato_ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(225, Short.MAX_VALUE)
+                .addComponent(Guardar_Button)
+                .addGap(90, 90, 90)
+                .addComponent(Cancelar_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(219, 219, 219))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addGap(118, 118, 118)
+                .addGap(99, 99, 99)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(Tipo_voto_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                    .addComponent(Tipo_voto_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(Candidato_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cancelar_Button)
-                    .addComponent(Guardar_Button))
-                .addGap(64, 64, 64))
+                    .addComponent(Candidato_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Cancelar_Button, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Guardar_Button, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(47, 47, 47))
         );
 
         pack();
@@ -165,7 +165,6 @@ public class Registrar_voto extends javax.swing.JFrame {
         // TODO add your handling code here:
         String valor= (String) Tipo_voto_ComboBox.getSelectedItem();
         if (valor.equals("----------")) {
-        // Si el JComboBox está vacío o no tiene un valor seleccionado
             JOptionPane.showMessageDialog(this, "Por favor, seleccione algun voto", "Error", JOptionPane.ERROR_MESSAGE);
             return;
     }
@@ -183,7 +182,7 @@ public class Registrar_voto extends javax.swing.JFrame {
         Gestion_votos.Candidato candidato=eleccion.candidato_pos(selec);
         voto.setCandidato(candidato);
         
-        System.out.println("Voto guardado: " + voto.getTipo() + " - Candidato: " + voto.getCandidato());
+        System.out.println("Voto guardado: " + voto.getTipo() + "  Candidato: " + voto.getCandidato());
     }
         
         acta.agregarVoto(voto);

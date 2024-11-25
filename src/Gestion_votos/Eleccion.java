@@ -8,12 +8,22 @@ public class Eleccion implements Serializable{
         private String tipoEleccion;
         private Lista<Candidato> candidatos;
         private Lista<Mesa> mesaelectoral;
-        
+        //true eleccion activo,false eleccion terminada
+        private boolean Estado;
+
+    public boolean isEstado() {
+        return Estado;
+    }
+
+    public void setEstado(boolean Estado) {
+        this.Estado = Estado;
+    }
         public Eleccion(String fecha, String tipoEleccion) {
             this.fecha = fecha;
             this.tipoEleccion = tipoEleccion;
             this.candidatos = new Lista<>();
             this.mesaelectoral = new Lista<>();
+            this.Estado=true;
             id++;
         }
 

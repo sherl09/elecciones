@@ -108,6 +108,7 @@ public class Mesa_Electoral extends javax.swing.JFrame {
         Mesa_Table.getColumnModel().getColumn(4).setCellRenderer(new Render());
         Mesa_Table.getColumnModel().getColumn(5).setCellRenderer(new Render());
 
+        Agregar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/votacion-online.png"))); // NOI18N
         Agregar_Button.setText("Agregar");
         Agregar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +116,7 @@ public class Mesa_Electoral extends javax.swing.JFrame {
             }
         });
 
+        EliminarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/eliminar.png"))); // NOI18N
         EliminarButton.setText("Eliminar");
         EliminarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +124,7 @@ public class Mesa_Electoral extends javax.swing.JFrame {
             }
         });
 
+        Editar_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/editar.png"))); // NOI18N
         Editar_Button.setText("Editar");
         Editar_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,12 +140,12 @@ public class Mesa_Electoral extends javax.swing.JFrame {
                 .addContainerGap(89, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(Agregar_Button)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(53, 53, 53)
                                 .addComponent(Editar_Button)
-                                .addGap(158, 158, 158)
+                                .addGap(85, 85, 85)
                                 .addComponent(EliminarButton))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(93, 93, 93))
@@ -157,12 +160,12 @@ public class Mesa_Electoral extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Agregar_Button)
                     .addComponent(EliminarButton)
-                    .addComponent(Editar_Button))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(Editar_Button)
+                    .addComponent(Agregar_Button))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -179,12 +182,11 @@ public class Mesa_Electoral extends javax.swing.JFrame {
         }
     });
     }//GEN-LAST:event_Agregar_ButtonActionPerformed
-    private void eliminarFilasSeleccionadas() {
+    private void eliminarFila() {
             DefaultTableModel model = (DefaultTableModel)Mesa_Table.getModel();
-        // Recorremos las filas en la tabla (de atrás hacia adelante para evitar problemas de índices al eliminar)
         for (int i = model.getRowCount()-1; i >= 0; i--) {
-            Boolean isSelected = (Boolean) model.getValueAt(i, 2); // Comprobar si está marcado el checkbox
-            if (isSelected != null && isSelected) {
+            Boolean selec = (Boolean) model.getValueAt(i, 2); 
+            if (selec != null && selec) {
                 System.out.println(i);
                 elec.eliminar_mesa(i+1);
                 mostrarMesas();
@@ -195,7 +197,7 @@ public class Mesa_Electoral extends javax.swing.JFrame {
     }
     private void EliminarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarButtonActionPerformed
         // TODO add your handling code here:
-        eliminarFilasSeleccionadas();
+        eliminarFila();
         mostrarMesas();
     }//GEN-LAST:event_EliminarButtonActionPerformed
 
@@ -229,14 +231,19 @@ public class Mesa_Electoral extends javax.swing.JFrame {
                 JButton boton=(JButton) value;
                 
                 if(boton.getName().equals("Miembros Mesa")){
+                    if(elec.isEstado()){
                     System.out.println("click Miembros Mesa");
                     Miembro_Mesa mesa = new Miembro_Mesa();
                     Gestion_votos.Mesa mesa1 = elec.mesa_pos(row);
                     
                     mesa.setdatos(mesa1);
                     mesa.setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(this, "La eleccion acabo", "Error", JOptionPane.ERROR_MESSAGE);
+                }
                 }
                 if(boton.getName().equals("Votos")){
+                    if(elec.isEstado()){
                     System.out.println("Votos");
                     Gestion_votos.Mesa mesa1 = elec.mesa_pos(row);
 
@@ -247,7 +254,9 @@ public class Mesa_Electoral extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "No se puede votar sin los 3 miembros de mesa", "Error", JOptionPane.ERROR_MESSAGE);
     }
-                   }
+                   }else{
+                    JOptionPane.showMessageDialog(this, "La eleccion acabo", "Error", JOptionPane.ERROR_MESSAGE);
+                }}
                 if(boton.getName().equals("Acta Electoral")){
                     System.out.println("click Acta Electoral");
                     
